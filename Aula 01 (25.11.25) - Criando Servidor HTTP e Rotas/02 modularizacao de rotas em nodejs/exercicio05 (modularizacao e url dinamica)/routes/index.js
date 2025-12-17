@@ -1,0 +1,5 @@
+export {homeRoute} from './home.js'
+export {consolesRoute} from './consoles.js'
+export {gamesRoute} from './games.js'
+export {notFoundRoute} from './notFound.js'
+export {gameRoute} from './game.js'
