@@ -6,8 +6,8 @@ const server = http.createServer((req, res) => {
     const url = new URL(req.url, `http://${req.headers.host}`)
     const path = url.pathname
 
-    res. writeHead(200, {
-        'Content-type':'text/plain; charset=utf-8'
+    res.writeHead(200, {
+        'Content-Type':'text/plain; charset=utf-8'
     })
 
     const route = routes[path]
