@@ -1,0 +1,14 @@
+{
+  "name": "exercicio13-urldinamica",
+  "version": "1.0.0",
+  "main": "products.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module"
+}
