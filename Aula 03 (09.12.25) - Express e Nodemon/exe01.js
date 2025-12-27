@@ -1,6 +1,6 @@
 import express from 'express';
 
-const app = express() // como se fosse: const server = http.serverCreate()
+const app = express() // como se fosse: const server = http.createServer()
 
 app.get('/', (req, res) => { // como se fosse: if (method === 'GET' && path === '/')
     res.send('Exercício Express funcionando') // como se fosse: res.writeHead + res.end
