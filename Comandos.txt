@@ -3,3 +3,5 @@ Instalar package.json: npm init -y
 Instalar nodemon
 * nodemon -v - para ver a versão instalada
 * npm install -g nodemon - para instalar globalmente
+
+

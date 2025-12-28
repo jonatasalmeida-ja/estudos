@@ -1,0 +1,29 @@
+Onde entra o VS Code (e editores de código)?
+
+Seguindo a mesma analogia do DVD, o VS Code entra antes de tudo rodar.
+
+Analogia completa (agora fechada):
+
+Imagine a produção de um filme 🎬
+
+Elemento	O que é
+🧠 Ideia do filme	Lógica que está na sua cabeça
+✍️ VS Code	Estúdio / câmera / mesa de edição
+🎬 Código	O filme em si
+📀 Arquivo .js	O DVD gravado
+📺 Node.js	O DVD player
+📡 HTTP	O canal de comunicação
+🏗️ Express	O menu do DVD (organiza as cenas)
+
+_________________________________
+Analogia ainda mais direta (bem curta)
+
+VS Code → caneta e papel ✏️
+
+Código → o texto escrito
+
+Node.js → quem lê e executa
+
+Express → a estrutura do texto
+
+HTTP → o meio pelo qual a mensagem viaja
