@@ -1,4 +1,4 @@
-    import http from 'http';
+import http from 'http';
 import { routes } from './routes.js';
 
 const server = http.createServer((req, res) => {
@@ -32,5 +32,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(3000, () => {
-    console.log('Server is running...');
+    console.log('Server is running...')
 })

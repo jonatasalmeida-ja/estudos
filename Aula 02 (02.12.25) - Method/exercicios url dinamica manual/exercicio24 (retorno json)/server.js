@@ -1,4 +1,4 @@
-    import http from 'http';
+import http from 'http';
 import { routes } from './routes.js';
 
 const server = http.createServer((req, res) => {
@@ -7,7 +7,7 @@ const server = http.createServer((req, res) => {
     const path = url.pathname;
 
     res.writeHead(200, {
-        'Content-type':'text/plain; charset=utf-8'
+        'Content-type':'application/json; charset=utf-8'
     });
 
     const parts = path.split('/');
@@ -29,8 +29,8 @@ const server = http.createServer((req, res) => {
     }
 
     handler(req, res, id);
-});
+})
 
 server.listen(3000, () => {
     console.log('Server is running...');
-})
+});
