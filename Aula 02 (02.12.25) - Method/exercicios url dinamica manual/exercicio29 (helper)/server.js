@@ -1,5 +1,6 @@
 import http from 'http';
 import { routes } from './routes.js';
+import { sendJson } from './utils/sendJson.js';
 
 const server = http.createServer((req, res) => {
     const method = req.method;
@@ -13,18 +14,14 @@ const server = http.createServer((req, res) => {
     const route = routes[basePath];
 
     if (!route) {
-        res.statusCode = 404;
-        res.setHeader('Content-type', 'application/json; charset=utf-8');
-        res.end(JSON.stringify({ error: 'Página não encontrada' }));
+        sendJson(res, 404, { error: 'Página não encontrada '})
         return;
     }
 
     const handler = route[method];
 
     if (!handler) {
-        res.statusCode = 405;
-        res.setHeader('Content-type', 'application/json; charset=utf-8');
-        res.end(JSON.stringify({ error: 'Método não permitido' }));
+        sendJson(res, 405, { error: 'Método não permitido' });
         return;
     }
 

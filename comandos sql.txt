@@ -1,0 +1,196 @@
+=> create database songs_db;
+
+=> use songs_db;
+
+=> create table songs (
+	id int primary key auto_increment,
+    name varchar(50),
+    artist varchar(50),
+    year int,
+    genre varchar(50)
+);
+
+=> INSERT INTO songs (title, artist, year, genre, duration_seconds, country_code)
+VALUES
+('Black Dog', 'Led Zeppelin', 1971, 'Rock', 330, 'UK');
+
+
+=> ALTERAR e ATUALIZAR TABELA:
+ALTER TABLE songs
+RENAME COLUMN name TO title;
+
+ALTER TABLE songs
+ADD duration_seconds INT;
+
+ALTER TABLE songs
+ADD country_code VARCHAR(5);
+
+UPDATE songs
+SET duration_seconds = 190
+WHERE id = 4;
+
+UPDATE songs SET country_code = 'UK' WHERE id = 10;
+UPDATE songs SET country_code = 'USA' WHERE id IN (12, 14, 15, 16, 21);
+
+=> SELECTS
+SELECT * FROM songs;
+
+SELECT * FROM songs ORDER BY artist DESC;
+SELECT * FROM songs
+LIMIT 3
+OFFSET 9;
+
+SELECT * FROM songs
+WHERE year > 2000
+AND genre = 'MPB';
+
+SELECT * FROM songs
+WHERE genre IN ('MPB', 'Rock');
+
+SELECT * FROM songs
+WHERE artist LIKE '%Purple';
+
+SELECT * FROM songs
+WHERE year > 1990
+AND genre = 'Rock'
+ORDER BY year DESC
+LIMIT 5;
+
+SELECT title, artist, year FROM songs
+WHERE genre IN ('Rock', 'MPB')
+AND year BETWEEN 1990 and 2010
+ORDER BY year ;
+
+SELECT * FROM songs
+WHERE title LIKE '%Love%'
+AND genre = 'Pop'
+ORDER BY year;
+
+SELECT title, artist, year FROM songs
+WHERE genre <> 'Rock'
+AND year > 2000
+LIMIT 3;
+
+SELECT * FROM songs
+WHERE genre IN ('Rock', 'Pop')
+AND title LIKE '%Love'
+ORDER BY year DESC
+LIMIT 5;
+
+=> FUNÇÕES DE AGREGAÇÃO
+SELECT SUM(duration_seconds) FROM songs;
+SELECT MIN(duration_seconds) FROM songs;
+SELECT AVG(duration_seconds) FROM songs;
+SELECT COUNT(DISTINCT country_code) FROM songs;
+
+SELECT AVG(duration_seconds) FROM songs
+WHERE genre = 'Rock'
+AND year > 1990;
+
+SELECT ROUND(AVG(duration_seconds), 1) AS avg_duration
+FROM songs
+WHERE genre = 'Pop'
+AND year > 2000;
+
+SELECT ROUND(AVG(duration_seconds), 2) AS pop_avg_duration
+FROM songs
+WHERE duration_seconds > 180 AND genre = 'Pop'
+AND year > 2010;
+
+SELECT COUNT(*) AS total_rock_songs,
+ROUND(AVG(duration_seconds), 1) AS avg_duration,
+SUM(duration_seconds) AS total_duration
+FROM songs
+WHERE genre = 'Rock'
+AND year > 2005;
+
+SELECT COUNT(*) AS total_pop_songs,
+MIN(duration_seconds) AS min_duration,
+MAX(duration_seconds) AS max_duration,
+ROUND(AVG(duration_seconds), 2) AS avg_duration
+FROM songs
+WHERE genre = 'Pop'
+AND year BETWEEN 2000 AND 2015
+AND duration_seconds > 120;
+
+=> GROUP BY
+SELECT
+	COUNT(country_code) codes
+FROM songs
+GROUP BY country_code;
+
+SELECT
+	genre, COUNT(*) total_songs
+FROM songs
+GROUP BY genre;
+
+SELECT
+	country_code, COUNT(*) total_songs
+FROM songs
+WHERE year > 2010
+GROUP BY country_code;
+
+SELECT
+	genre, ROUND(AVG(duration_seconds), 2) avg_duration
+FROM songs
+WHERE duration_seconds > 150
+GROUP BY genre;
+
+SELECT
+	genre,
+    COUNT(*) total_songs,
+    ROUND(AVG(duration_seconds), 1) avg_duration
+FROM songs
+WHERE duration_seconds > 120
+GROUP BY genre
+HAVING AVG(duration_seconds) > 200;
+
+--------------
+Por que o GROUP BY vem depois do WHERE?
+Porque o SQL executa em ordem lógica, não na ordem que escrevemos.
+
+A ordem real de execução é:
+1) FROM
+2) WHERE
+3) GROUP BY
+4) SELECT
+5) ORDER BY
+
+O que isso significa?
+Primeiro ele pega a tabela
+Depois ele filtra (WHERE)
+Só depois ele agrupa (GROUP BY)
+
+Analogia
+Imagine:
+Você chama todos os alunos da escola (FROM)
+Você manda sair quem não passou na prova (WHERE)
+Depois você divide os que ficaram por sala (GROUP BY)
+
+Não faz sentido dividir por sala antes de saber quem ficou.
+--------------
+
+--------------
+ATENÇÃO
+
+"É precedência lógica (AND / OR)"
+
+Significa que:
+Quando usamos AND e OR juntos no WHERE, o SQL segue uma ordem automática para decidir o que calcular primeiro.
+Ou seja, ele não lê simplesmente da esquerda para a direita — ele tem regras internas de prioridade.
+
+"Porque AND tem prioridade maior que OR."
+
+Significa que:
+O SQL sempre resolve as condições com AND antes das condições com OR, a menos que você use parênteses.
+
+Analogia simples
+
+É como matemática: 2 + 3 × 4
+Primeiro resolve a multiplicação.
+
+No SQL: A AND B OR C
+Primeiro resolve: (A AND B) OR C
+
+Se quiser mudar isso → use parênteses.
+--------------
