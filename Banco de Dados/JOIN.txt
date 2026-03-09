@@ -1,0 +1,42 @@
+use songs_db;
+SELECT * FROM artists;
+SELECT * FROM songs;
+
+create table artist (
+	id int auto_increment primary key,
+    name varchar(255)
+);
+
+INSERT INTO artist (name)
+SELECT DISTINCT artist
+FROM songs;
+
+ALTER TABLE songs
+ADD COLUMN artist_id INT;
+
+UPDATE songs
+JOIN artist ON songs.artist = artist.name
+SET songs.artist_id = artist.id;
+
+ALTER TABLE songs
+DROP COLUMN artist;
+
+SELECT songs.title, artist.name
+FROM songs
+JOIN artist
+ON songs.artist_id = artist.id;
+
+SELECT songs.title, artists.name, songs.year
+FROM songs
+JOIN artists
+ON songs.artist_id = artists.id;
+
+alter table artist
+rename to artists;
+
+SELECT songs.title, artists.name, songs.year
+FROM songs
+JOIN artists
+ON songs.artist_id = artists.id
+WHERE year > 2010
+ORDER BY year DESC;

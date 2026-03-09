@@ -1,0 +1,66 @@
+Ordem lógica do SQL
+Quando escrevemos uma query, a ordem parece ser:
+SELECT
+FROM
+WHERE
+GROUP BY
+HAVING
+ORDER BY
+LIMIT
+
+Mas o banco NÃO executa nessa ordem.
+Ele executa assim:
+FROM → pega tabela
+WHERE → filtra linhas
+GROUP BY → agrupa linhas
+HAVING → filtra grupos
+SELECT → calcula resultado
+ORDER BY → ordena
+LIMIT → limita
+
+# Revisão de Filtros
+SELECT title, artist, year FROM songs
+WHERE genre IN ('Rock', 'Pop')
+AND year BETWEEN 1990 and 2010
+AND duration_seconds > 180
+ORDER BY year DESC
+LIMIT 5;
+
+# Revisão de Agregação
+SELECT 
+    COUNT(*) total_songs,
+    ROUND(AVG(duration_seconds), 2) avg_duration
+FROM songs
+WHERE genre = 'Rock'
+AND year > 2000;
+
+# Revisão de Group By
+SELECT
+	genre,
+	COUNT(*) total_songs,
+    ROUND(AVG(duration_seconds), 1) avg_duration
+FROM songs
+WHERE year > 2005
+GROUP BY genre
+ORDER BY avg_duration DESC;
+
+# Revisão do Having
+SELECT
+	genre,
+    COUNT(*) total_songs,
+    ROUND(AVG(duration_seconds), 1) avg_duration
+FROM songs
+WHERE year > 2000
+GROUP BY genre
+HAVING COUNT(*) > 3
+ORDER BY total_songs DESC;
+
+SELECT
+	genre,
+    COUNT(*) total_songs,
+    ROUND(AVG(duration_seconds), 1) avg_duration
+FROM songs
+WHERE year > 2000
+GROUP BY genre
+HAVING COUNT(*) > 2
+ORDER BY total_songs DESC;
