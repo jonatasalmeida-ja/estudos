@@ -30,11 +30,13 @@ const orders = {
         }
 
         const numberId = Number(id);
-        const order = ordersList.find(ord => ord.id === numberId);
+        const index = ordersList.findIndex(ord => ord.id === numberId);
 
-        if (!order) {
+        if (index === -1) {
             return sendJson(res, 404, { error: 'Pedido não encontrado' });
         }
+
+        ordersList.splice(index, 1);
 
         sendJson(res, 200, { message: 'Pedido removido' });
     }
