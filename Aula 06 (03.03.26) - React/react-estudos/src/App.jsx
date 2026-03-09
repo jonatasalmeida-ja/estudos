@@ -2,29 +2,33 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Header from './components/Header'
+import Header from './exercises/exe02/Header'
+import { tasks } from './exercises/exe02/tasks'
+import Button from './exercises/exe02/Button'
 
 function App() {
   const [count, setCount] = useState(0)
-
-  const orders = [
-    { id: 1, customer: "João" },
-    { id: 2, customer: "Maria" },
-    { id: 3, customer: "Pedro" }
-  ];
+  const [lastTask, setLastTask] = useState('')
 
   return (
     <>
       <div>
-        <Header title='Página Inicial'/>
-        <Header title='Área de usuários'/>
-        <p>Minha primeira aplicação react</p>
+        <Header title='Minhas Tarefas'/>
       </div>
 
       <div>
-        {orders.map(order => (
-          <p key={order.id}>Pedido de {order.customer}</p>
-        ))}
+        {tasks.map(t => (
+          <div key={t.id}>
+            <p>{t.title}</p>
+            <Button 
+              label='Selecionar' onClick={() => setLastTask(t.title)}
+            />
+          </div>))}
+      </div>
+
+      <div>
+        <p>Última tarefa clicada</p>
+        {lastTask}
       </div>
     </>
   )
