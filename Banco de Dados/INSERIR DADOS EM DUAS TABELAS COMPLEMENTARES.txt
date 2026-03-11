@@ -1,0 +1,24 @@
+use songs_db;
+select * from songs;
+
+select * from artists
+order by name;
+
+ALTER TABLE artists
+ADD UNIQUE (name);
+
+INSERT INTO artists (name)
+VALUES
+('Eric Clapton'),
+('Jimi Hendrix'),
+('Stevie Ray Vaughan'),
+('Paramore'),
+('Djavan');
+
+INSERT INTO songs (title, year, genre, duration_seconds, country_code, artist_id)
+VALUES
+('I Shot The Sheriff', 1973, 'Blues Rock', 264, 'UK', (SELECT id FROM artists WHERE name = 'Eric Clapton')),
+('All Along The Watchtower', 1968, 'Hard Rock', 244, 'USA', (SELECT id FROM artists WHERE name = 'Jimi Hendrix')),
+('Texas Flood', 1983, 'Blues', 321, 'USA', (SELECT id FROM artists WHERE name = 'Stevie Ray Vaughan')),
+("Ain't It Fun", 2013, 'Pop Rock', 228, 'USA', (SELECT id FROM artists WHERE name = 'Paramore')),
+('Lilás', 1984, 'MPB', 285, 'BR', (SELECT id FROM artists WHERE name = 'Djavan'));

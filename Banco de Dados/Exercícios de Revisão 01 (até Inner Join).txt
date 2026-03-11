@@ -1,0 +1,61 @@
+use songs_db;
+
+# Exercícios de Revisao
+
+# 01
+SELECT title, artist_id, year
+FROM songs
+WHERE genre = 'Rock'
+AND year > 1990
+ORDER BY year DESC
+LIMIT 5;
+
+# 02
+SELECT title, year, duration_seconds
+FROM songs
+WHERE genre IN ('Rock', 'Pop')
+AND duration_seconds > 180
+ORDER BY duration_seconds DESC
+LIMIT 10;
+
+# 03
+SELECT
+	COUNT(*) total_songs,
+    ROUND(AVG(duration_seconds), 1) avg_duration
+FROM songs
+WHERE genre = 'Rock'
+AND year > 2000;
+
+# 04
+SELECT
+	genre,
+    COUNT(*) total_songs,
+    ROUND(AVG(duration_seconds), 1) avg_duration
+FROM songs
+WHERE year > 2000
+GROUP BY genre
+ORDER BY total_songs DESC;
+
+# 05
+SELECT
+	genre,
+    COUNT(*) total_songs,
+    ROUND(AVG(duration_seconds), 1) avg_duration
+FROM songs
+WHERE year > 2000
+GROUP BY genre
+HAVING COUNT(*) > 3
+ORDER BY avg_duration DESC;
+
+# 06
+SELECT
+	artists.name,
+    COUNT(*) total_songs,
+    ROUND(AVG(duration_seconds), 1) avg_duration
+FROM songs
+JOIN artists
+ON songs.artist_id = artists.id
+WHERE year > 2000
+GROUP BY artists.name
+HAVING COUNT(*) > 2
+ORDER BY total_songs DESC;
