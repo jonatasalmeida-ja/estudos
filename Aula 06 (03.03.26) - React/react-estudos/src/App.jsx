@@ -2,33 +2,27 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Header from './exercises/exe02/Header'
-import { tasks } from './exercises/exe02/tasks'
-import Button from './exercises/exe02/Button'
+import Header from './exercises/exe08/Header'
+import CourseItem from './exercises/exe08/CourseItem'
+import { courses } from './exercises/exe08/courses'
 
 function App() {
   const [count, setCount] = useState(0)
-  const [lastTask, setLastTask] = useState('')
 
   return (
     <>
       <div>
-        <Header title='Minhas Tarefas'/>
+        <Header title='Lista de Cursos'/>
       </div>
 
       <div>
-        {tasks.map(t => (
-          <div key={t.id}>
-            <p>{t.title}</p>
-            <Button 
-              label='Selecionar' onClick={() => setLastTask(t.title)}
-            />
-          </div>))}
-      </div>
-
-      <div>
-        <p>Última tarefa clicada</p>
-        {lastTask}
+        {courses.map(c => (
+          <CourseItem
+            key={c.id}
+            title={c.title}
+            duration={c.duration}
+          />
+        ))}
       </div>
     </>
   )
