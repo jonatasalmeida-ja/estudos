@@ -25,7 +25,17 @@ const movies = {
     sendJson(res, 200, movie);
   },
   POST: (req, res, id) => {
-    return sendJson(res, 201, { message: 'Filme criado com sucesso' });  
+    let body = '';
+
+    req.on('data', chunk => {
+      body += chunk;
+    });
+
+    req.on('end', () => {
+      const data = JSON.parse(body);
+
+      sendJson(res, 201, data);
+    });
   },
   DELETE: (req, res, id) => {
     if (!id) {
