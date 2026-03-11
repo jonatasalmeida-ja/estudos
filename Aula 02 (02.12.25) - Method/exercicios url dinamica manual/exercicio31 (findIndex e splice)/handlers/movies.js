@@ -34,6 +34,15 @@ const movies = {
     req.on('end', () => {
       const data = JSON.parse(body);
 
+      const newId = moviesList.length + 1;
+      const newMovie = {
+        id: newId,
+        title: data.title,
+        year: data.year
+      };
+
+      moviesList.push(newMovie);
+
       sendJson(res, 201, data);
     });
   },
