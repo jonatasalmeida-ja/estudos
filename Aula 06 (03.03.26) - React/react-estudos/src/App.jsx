@@ -2,9 +2,9 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Header from './exercises/exe08/Header'
-import CourseItem from './exercises/exe08/CourseItem'
-import { courses } from './exercises/exe08/courses'
+import Header from './exercises/exe09/Header'
+import MovieItem from './exercises/exe09/MovieItem'
+import { movies } from './exercises/exe09/movies'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,15 +12,15 @@ function App() {
   return (
     <>
       <div>
-        <Header title='Lista de Cursos'/>
+        <Header title={'Lista de Filmes'}/>
       </div>
 
       <div>
-        {courses.map(c => (
-          <CourseItem
-            key={c.id}
-            title={c.title}
-            duration={c.duration}
+        {movies.map(m => (
+          <MovieItem
+            key={m.id}
+            title={m.title}
+            year={m.year}
           />
         ))}
       </div>
