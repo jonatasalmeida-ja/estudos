@@ -25,3 +25,27 @@ function MovieItem({ title, year }) {
 };
 
 export default MovieItem;
+
+/*
+function App() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <>
+      <div>
+        <Header title={'Lista de Filmes'}/>
+      </div>
+
+      <div>
+        {movies.map(m => (
+          <MovieItem
+            key={m.id}
+            title={m.title}
+            year={m.year}
+          />
+        ))}
+      </div>
+    </>
+  )
+}
+*/
