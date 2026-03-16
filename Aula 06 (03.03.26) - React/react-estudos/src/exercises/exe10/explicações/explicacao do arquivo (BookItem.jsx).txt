@@ -1,0 +1,97 @@
+Próximo arquivo é o BooksItem.jsx
+import { useState } from "react";
+import Button from "./Button";
+
+function BooksItem({ title, author }) {
+    const [showBook, setShowBook] = useState(false);
+
+    function toggleSwitch() {
+        setShowBook(prev => !prev);
+    }
+
+    return (
+        <div>
+            <p>{title}</p>
+
+            <Button 
+                label='Ver autor'
+                onClick={toggleSwitch}
+            />
+
+            {showBook && (
+                <p>Autor: {author}</p>
+            )}
+        </div>
+    );
+};
+
+export default BooksItem;
+
+Analise se o meu codigo está correto e também o pseudocodigo que vou tentar fazer com as minhas palavras
+
+Peseudocódigo
+Importe a função Button
+
+Crie uma função chamada BooksItem
+
+Receba as proprieadades title e author
+
+Renderize:
+a) Crie uma função de "liga/desliga" chamada toggleSwitch.
+b) Um paragrafo (tag p) com o title
+c) Renderize um botão com a função que foi importada, dentro dele coloque o nome do botão de "Ver autor"
+d) Quando clicar no botão faça ação que foi configurada na função chamada "toggleSwitch" 
+e) Renderize um paragrafo (tag p) com o texto "Autor: " + o valor da propriedade "author"
+
+OBS: Não soube explicar a linha: const [showBook...
+
+-----
+Importar useState do React
+Importar o componente Button
+
+Criar componente BooksItem
+
+Receber propriedades:
+    title
+    author
+
+Criar estado showBook
+    valor inicial = false
+
+Criar função toggleSwitch
+    inverter valor de showBook
+
+Renderizar:
+
+    mostrar título do livro
+
+    mostrar botão "Ver autor"
+        quando clicar → executar toggleSwitch
+
+    se showBook for true
+        mostrar "Autor: " + author
+
+-----
+O que é um useState:
+É um Hook do React.
+Hook é uma função especial do React que permite usar recursos do React
+Nesse caso: useState permite crirar estado dentro de um componente
+
+Estado é uma informação que pode mudar e que afeta a interface
+No caso: Mostrar autor? sim ou não
+
+const [showBook, setShowBook] é desestruturação de array:
+showBook = valor atual
+setShowBooks = funçao para mudar o valor
+-----
+
+Tem só mais um detalhe que eu quero tentar explicar e você me diz se estou certo: no trecho ...setShowBook(prev => !prev);... Foi usado o "prev" para guardar o estado atual, que pode ser prev = true, quando clica fica prev = false e vice versa
+
+COrreção:
+
+prev representa o valor anterior do estado,
+que o React passa automaticamente para a função.
+
+pegue o valor anterior do estado
+inverta ele
+e atualize o estado com esse novo valor

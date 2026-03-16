@@ -1,0 +1,34 @@
+Eu quero dar uma pausa neste momento para tirar dúvidas e revisar alguns conceitos, até mesmo conceitos fundamentais, atrávés desse código.
+
+Vou começar tentando explicar com as minhas palavras os pontos desse exercício. Vou enviar arquivo por arquivo para ficar mais organizado e fácil de anotar:
+-----
+Arquivo books.jsx
+const books = [
+  { id: 1, title: "Dom Casmurro", author: "Machado de Assis" },
+  { id: 2, title: "1984", author: "George Orwell" },
+  { id: 3, title: "O Hobbit", author: "J.R.R. Tolkien" }
+];
+
+export { books };
+-----
+1) Aqui atribuimos a variável "books" um array, que é uma lista de dados, um conjunto de dados, que podem ser de tipos diferentes.
+* Uma lista ordenada de valore
+
+2) Dentro desse array colocamos vários objetos, OBS: Não sei explicar o que é objeto.
+* Um objeto é uma estrutura queguarda informações organizadas em pares (chave: valor)
+* Então objeto = conjunto de propriedades
+
+3) No final exportamos essa variável para ser reutilizada em outras partes do código
+* Outros arquivos podem importar
+-----
+Pseudocódigo:
+Criar uma lista chamada books
+
+Dentro dessa lista colocar vários livros
+
+Cada livro possui:
+  - um id
+  - um título
+  - um autor
+
+Disponibilizar essa lista para que outros arquivos do projeto possam usar

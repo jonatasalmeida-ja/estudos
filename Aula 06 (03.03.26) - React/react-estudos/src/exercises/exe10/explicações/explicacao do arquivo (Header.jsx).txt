@@ -1,0 +1,27 @@
+O proximo arquivo é o Header
+function Header({ title }) {
+    return (
+        <h1>{title}</h1>
+    );
+};
+
+export default Header;
+
+Vou tentar escrever sozinho somente o pseudocodigo:
+
+Criar uma Função chamada Header
+
+Receber um parametro chamado "title"
+
+retornar em html um "título h1" nomeado de acordo com a entrada enviada
+OBS: Nesse pronto - Isso não é exatamente HTML, é JSX. JSX éHTML dentro do Javascript
+Então o correto seria: criar um elemento h1 e mostrar dentro dele o valor de title.
+
+Exportar o Header para ser reutilizado e importado em outros arquivos
+
+CHat cpgt:
+Criar um componente Header
+Receber a propriedade title
+Renderizar um elemento h1
+Mostrar o valor de title dentro do h1
+Exportar o componente para uso em outros arquivos

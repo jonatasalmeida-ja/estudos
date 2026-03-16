@@ -1,0 +1,80 @@
+Proximo arquivo é o Button.jsx
+function Button({ label, ...rest }) {
+    return (
+        <button {...rest}>{label}</button>
+    );
+};
+
+export default Button;
+-----
+1) Função é um bloco de códigos específico para uma determinada tarefa, ela recebe parametros que, que são os inputs para que essa função entre em ação. Essa função processa tudo e retorna o resultado
+* Função = bloco de código reutilizável
+a) recebe entradas (parametros)
+b) executa alguma lógica
+c) retorna um resultado
+
+2) Nos parenteses colocamos os paramtros, nesse caso, os parametros estão já desestruturados. OBS: Não sei explicar a desestruturação e nem como seria se não tivesse a desestruturação
+*Sem desestruturação
+
+A função seria assim:
+
+function Button(props) {
+  return (
+    <button>{props.label}</button>
+  );
+}
+
+Aqui o React envia um objeto chamado props.
+
+Exemplo do que chega:
+props = {
+  label: "Comprar",
+  onClick: algumaFunção
+}
+
+Então você acessa:
+
+props.label
+props.onClick
+
+*Com desestruturação
+
+Você fez:
+
+function Button({ label, ...rest })
+
+Isso significa:
+
+pegar a propriedade label diretamente
+
+Então você pode usar:
+
+label
+
+3) Função exportada para ser reutilizada e importada em outros arquivos. OBS: Não sei explicar o "default" no export
+*Porque o arquivo tem um elemento principal.
+
+Arquivo:
+
+Button.jsx
+
+Componente principal:
+
+Button
+
+Então faz sentido:
+
+export default Button
+-----
+Pseudocódigo
+Criar um componente Button
+
+Receber propriedades: Label e outras propriedades
+
+Rendereizar um botão HTML
+
+Mostrar o texto do label dentro do botão
+
+APlicar as outras propriedades no botão
+
+Permitir que o componente seja importado em outros arquivos
