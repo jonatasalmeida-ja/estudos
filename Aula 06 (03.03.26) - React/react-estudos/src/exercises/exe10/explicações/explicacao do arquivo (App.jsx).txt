@@ -1,0 +1,51 @@
+Arquivo App.jsx
+function App() {
+  return (
+    <>
+      <div>
+        <Header
+          title={'Lista de Livros'}
+        />
+      </div>
+
+      <div>
+        {books.map(b => (
+          <BookItem
+            key={b.id}
+            title={b.title}
+            author={b.author}
+          />
+        ))}
+      </div>
+    </>
+  )
+}
+------
+Nesse arquivo eu peguei somente a parte da função app, então o meu pseudocódigo seria assim:
+
+Crie uma função chamada App
+
+Renderize uma div com a função importada chamada Header com o título chamado "Lista de Livros" dentro dela
+
+Renderizer outra div com o array importado chamado "books"
+
+Faça uma busca dentro do array books e retorne através da função "BookItem" o Título e Autor do livro clicado.
+-----
+Correção
+Criar componente App
+
+Renderizar:
+
+  Uma div contendo o componente Header
+  Enviar a propriedade title = "Lista de Livros"
+
+  Outra div contendo a lista de livros
+
+  Para cada livro dentro do array books:
+
+      Criar um componente BookItem
+
+      Enviar para ele:
+        id do livro (key)
+        título
+        autor
